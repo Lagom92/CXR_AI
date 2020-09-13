@@ -12,7 +12,7 @@ def getLabel(n):
 
 # 예측 함수
 def diseasePredict(file_path):
-    ml_path = r"C:\Users\Lagom\lagom\CXR_AI\3. WEB\sample\XCR\board\ml\densenet_v2.h5"
+    ml_path = r"C:\Users\Lagom\lagom\CXR_AI\3. WEB\sample\XCR\board\ml\densenet_.h5"
 
     image = cv2.imread(file_path)
     image = cv2.resize(image, dsize=(224, 224), interpolation=cv2.INTER_LINEAR)
