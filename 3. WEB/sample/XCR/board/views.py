@@ -1,6 +1,7 @@
 from django.http import request
 from django.shortcuts import redirect, render
 from .models import Xray
+from .ml.predict import diseasePredict
 
 # 메인 
 def home(request):
@@ -32,8 +33,8 @@ def detect(request):
 def result(request):
     xray = Xray.objects.last()
 
-    # Predict 추가 예정
-    predict = ""
+    # Predict 
+    predict = diseasePredict(xray.photo.path)
 
     context = {
         'title': xray.title,
@@ -42,4 +43,3 @@ def result(request):
     }
 
     return render(request, 'result.html', context)
-
