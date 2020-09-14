@@ -41,8 +41,10 @@ import cv2
 import tensorflow_hub as hub
 
 def prediction(image):
-    yourmodel = r"C:\Users\Lagom\lagom\CXR_AI\3. WEB\sample\XCR\board\ml\resnet_model.h5"
-    f_model = r"C:\Users\Lagom\lagom\CXR_AI\3. WEB\sample\XCR\board\ml\resnet_feature_model.h5"
+    # yourmodel = r"C:\Users\Lagom\lagom\CXR_AI\3. WEB\sample\XCR\board\ml\resnet_model.h5"
+    # f_model = r"C:\Users\Lagom\lagom\CXR_AI\3. WEB\sample\XCR\board\ml\resnet_feature_model.h5"
+    yourmodel = r'..\..\..\..\..\2. ML\efficientnet_model1.h5'
+    f_model = r'..\..\..\..\..\2. ML\efficientnet_f_model1.h5'
 
     model = load_model(yourmodel)
     img = cv2.imread(image)
@@ -72,7 +74,7 @@ def Predict_CXR(image_path):
     # 모델 불러오기
     # 모델 불러올 때 Warning이 표시될 수 있는데 이는 더 training하지 못한다는 의미이고,
     # 이 함수에서는 더 이상 training을 하지 않음.
-    model_path = r'..\..\..\..\..\2. ML\Inception_Resnet_feature_model.h5'
+    model_path = r'..\..\..\..\..\2. ML\Inception_Resnet_V2_224_best.h5'
     # r'C:\Users\wjdwl\Desktop\covid_model\CXR_AI\2. ML\Inception_Resnet_V2_224_best.h5'
     feature_model_path = r'..\..\..\..\..\2. ML\Inception_Resnet_feature_model.h5'
 
