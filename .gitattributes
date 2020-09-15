@@ -1,2 +1,5 @@
 *.psd filter=lfs diff=lfs merge=lfs -text
 2.[[:space:]]ML/Inception_Resnet_feature_model.h5 filter=lfs diff=lfs merge=lfs -text
+2.[[:space:]]ML filter=lfs diff=lfs merge=lfs -text
+2.[[:space:]]ML/Inception_Resnet_feature_model299.h5 filter=lfs diff=lfs merge=lfs -text
+3.[[:space:]]WEB/sample/XCR/board/ml/Inception_Resnet_feature_model299.h5 filter=lfs diff=lfs merge=lfs -text
