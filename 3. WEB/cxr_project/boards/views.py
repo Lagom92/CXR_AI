@@ -34,18 +34,16 @@ def detect(request):
 def result(request):
     xray = Xray.objects.last()
 
-    # Predict 
-    predict = diseasePredict(xray.photo.path)
-
-    # predict2
-    # predict2 = inception_resnt_predict_CXR(xray.photo.path)
+    # Predict
+    if xray.prediction is None:
+        predict = diseasePredict(xray.photo.path)
+        xray.prediction = predict
+        xray.save()
 
     context = {
         'title': xray.title,
         'photo': xray.photo,
-        'predict': predict,
-        # 'predict2': predict2
-
+        'predict': xray.prediction,
     }
 
     return render(request, 'result.html', context)
