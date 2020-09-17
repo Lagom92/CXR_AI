@@ -9,15 +9,17 @@
     <a href="{% url 'test' %}">이미지 입력하기</a>
     <br>
     
-    <h2>{{title}}</h2>
-    <br/><br/>
+    <h2>title : {{title}}</h2>
+    <br/>
     
     {% if photo %}
-    <h3>predict: {{predict}}</h3>
-    <br>
-    <h3>predict2: {{predict2}}</h3>
-    <h3>이미지</h3>
+    {% comment %} <h3>predict: {{predict}}</h3>
+    <br> {% endcomment %}
+    <h1>예측 결과 : {{predict2}}</h1> <br>
+    <h2>원본 X-ray</h2>
     <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
+    <h2>예상 병변</h2>
+    <img src="{{heatmap.url}}" width="300" height="300"> <br/><br/>
     {% endif %}
     
 {% endblock %}
