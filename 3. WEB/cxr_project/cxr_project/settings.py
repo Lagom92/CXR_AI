@@ -14,7 +14,7 @@ SECRET_KEY = 'o_+82^%6a9d1j3(u)%v8lu(0fp23^uwy)j&9y9pl+x_8hmpd52'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['jinhyuk.kim','localhost']
 
 
 # Application definition
@@ -64,12 +64,25 @@ WSGI_APPLICATION = 'cxr_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'cxr_ai',
+        'USER': 'jin',
+        'PASSWORD': '21978799',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+
 
 
 # Password validation
@@ -109,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
