@@ -2,6 +2,7 @@ from django.http import request
 from django.shortcuts import render, redirect
 from .models import Xray
 # from .ml.predict import diseasePredict, prediction,inception_resnt_predict_CXR
+from .ml.predict import diseasePredict
 
 
 def main(request):
@@ -34,7 +35,7 @@ def result(request):
     xray = Xray.objects.last()
 
     # Predict 
-    # predict = diseasePredict(xray.photo.path)
+    predict = diseasePredict(xray.photo.path)
 
     # predict2
     # predict2 = inception_resnt_predict_CXR(xray.photo.path)
@@ -42,7 +43,7 @@ def result(request):
     context = {
         'title': xray.title,
         'photo': xray.photo,
-        # 'predict': predict,
+        'predict': predict,
         # 'predict2': predict2
 
     }

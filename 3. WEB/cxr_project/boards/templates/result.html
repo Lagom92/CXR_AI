@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block body %}
+<link rel="stylesheet" href="{% static 'css/result.css' %}">
+<script src="{% static 'js/result.js' %}"></script>
+
+
+<div class="loader"></div>
+
+    
+<div class="container">
 
     <h1>Result</h1>
     <h3>가장 최근 입력 이미지</h3>
@@ -20,4 +30,5 @@
     <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
     {% endif %}
     
+</div>
 {% endblock %}
