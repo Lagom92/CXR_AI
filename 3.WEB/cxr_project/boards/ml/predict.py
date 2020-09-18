@@ -20,12 +20,12 @@ def prediction(image):
     feature_model = tf.keras.models.load_model((f_model),custom_objects={'KerasLayer':hub.KerasLayer})
     feature_vector = feature_model.predict(img)
     prediction = model.predict(feature_vector)[0]
-    unique_sorted_Y = ['COVID','NORMAL','PNEUMONIA']
+    unique_sorted_Y = ['COVID19','NORMAL','PNEUMONIA']
     index = prediction.argmax()
     label = unique_sorted_Y[index]
 
     return label
-
+#진균
 def inception_resnt_predict_CXR_and_heatmap(image_path):
     model_path = r'boards\ml\inception_Resnet_model299_best.h5'
     feature_model_path = r'boards\ml\Inception_Resnet_feature_model299.h5'
@@ -41,7 +41,7 @@ def inception_resnt_predict_CXR_and_heatmap(image_path):
 
     return prediction, cam_image
 
-
+#시영
 def getLabel(n):
     LABELS = {'COVID19': 0, 'NORMAL': 1, 'PNEUMONIA': 2}
     for key, val in LABELS.items():

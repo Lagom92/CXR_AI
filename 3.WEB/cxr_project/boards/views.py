@@ -10,27 +10,12 @@ def main(request):
 
     return render(request, 'main.html')
 
-
 # 이미지 요청 
 def test(request):
     if request.method == 'POST':
         xray = Xray.objects.create(
-            photo = request.FILES['image']
+            photo = request.FILES['image'],
         )
-
-        if xray.prediction is None:
-            predict, heatmap = inception_resnt_predict_CXR_and_heatmap(xray.photo.path)
-
-            heatmap_io = BytesIO()
-            heatmap.save(heatmap_io, format='jpeg')
-            heat_file = InMemoryUploadedFile(heatmap_io, None, 'heat.jpg', 'image/jpeg', None, None)
-            xray.heatmap = heat_file
-            # xray.save()
-
-            # predict, _ = inception_resnt_predict_CXR_and_heatmap(xray.photo.path)
-            xray.prediction = predict
-            xray.save()
-
         return redirect('result')
 
     else:
@@ -43,6 +28,15 @@ def result(request):
     
     # predict1 = prediction(xray.photo.path)
     # predict3 = diseasePredict(xray.photo.path)
+    if not xray.prediction:
+        predict, heatmap = inception_resnt_predict_CXR_and_heatmap(xray.photo.path)
+        heatmap_io = BytesIO()
+        heatmap.save(heatmap_io, format='jpeg')
+        heat_file = InMemoryUploadedFile(heatmap_io, None, 'heat.jpg', 'image/jpeg', None, None)
+
+        xray.prediction = predict
+        xray.heatmap = heat_file
+        xray.save()
 
     context = {
         'photo': xray.photo,
