@@ -1,33 +1,28 @@
 import tensorflow as tf 
 from tensorflow.keras.preprocessing import image
 import numpy as np 
+import cv2
+
 
 def getLabel(n):
-    LABELS = {'PNEUMONIA': 0, 'NORMAL': 1, 'COVID19': 2}    
+    LABELS = {'COVID19': 0, 'NORMAL': 1, 'PNEUMONIA': 2}
     for key, val in LABELS.items():
         if n == val:
             return key
-    return -1
 
 
 # 예측 함수
-def diseasePredict(img_path):
-    base_model_path = r"boards\ml\DenseNet_base_model.h5"
-    model_path = r"boards\ml\DenseNet_model.h5"
-
-    base_model = tf.keras.models.load_model(base_model_path)
+def diseasePredict(image_path):
+    model_path = r"boards\ml\Densenet.h5"
     model = tf.keras.models.load_model(model_path)
 
-    img = image.load_img(img_path, target_size=(224, 224))
-    img_tensor = image.img_to_array(img)
-    img_tensor = np.expand_dims(img_tensor, axis=0)
-    img_tensor /= 255.
+    img = cv2.imread(image_path)
+    img = cv2.resize(img, dsize=(224,224))
+    img = img / 255.0
+    img = np.expand_dims(img, axis=0)
 
-    pred = base_model.predict(img_tensor)
-    result = model.predict(pred)
-
-    code = np.argmax(result,axis=1)
-
+    prediction = model.predict(img)
+    code = np.argmax(prediction)
     disease = getLabel(code)
 
     return disease
