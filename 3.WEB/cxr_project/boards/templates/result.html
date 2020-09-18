@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <h1>Result</h1>
+    <h3>가장 최근 입력 이미지</h3>
+    <a href="{% url 'main' %}">home</a>
+    <br>
+    <br>
+    <a href="{% url 'test' %}">이미지 입력하기</a>
+    <br>
+    
+    <h2>title : {{title}}</h2>
+    <br/>
+    
+    {% if photo %}
+    {% comment %} <h3>predict: {{predict}}</h3>
+    <br> {% endcomment %}
+    <h1>예측 결과KJY : {{predict1}}</h1> <br>
+    <h1>예측 결과JJG : {{predict2}}</h1> <br>
+    
+    <h2>원본 X-ray</h2>
+    <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
+    <h2>예상 병변</h2>
+    <img src="{{heatmap.url}}" width="300" height="300"> <br/><br/>
+    {% endif %}
+    
+{% endblock %}
