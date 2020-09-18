@@ -103,6 +103,7 @@ def show_CAM(img_path, heatmap, prediction):
     jet_heatmap = gamma_correction(jet_heatmap, g=2.2)
 
     # Superimpose the heatmap on original image
+    # NORMAL이면 원본이미지만 반환
     if prediction =='NORMAL':
         superimposed_img = img
     else:
@@ -130,7 +131,7 @@ def predict_CXR(image_path, model, feature_model):
     # 앞서 생성한 model 분류기를 통해 예측 수행
     prediction = model.predict(feature_vector)[0]
     # print(prediction)
-    unique_sorted_Y = ['COVID','NORMAL','PNEUMONIA']
+    unique_sorted_Y = ['COVID19','NORMAL','PNEUMONIA']
     #확률의 예측값을 5개 선출 
     # 가장 예측값이 높은 인덱스를 반환
     index = prediction.argmax()
