@@ -2,22 +2,18 @@
 {% load static %}
 
 {% block body %}
-<link rel="stylesheet" href="{% static 'css/loader.css' %}">
-<script src="{% static 'js/loader.js' %}"></script>
-
 
 <!-- loading image -->
-<div id="loading"></div>
+<div id="loading"><div id="loader_text">1분에서 2분정도의 시간이 걸립니다.</div></div>
     
 <div class="container">
-<h1>test</h1>
-<br>
-<a href="{% url 'main' %}">main</a>
-<br>
-<br>
-<a href="{% url 'result' %}">최근 입력된 이미지 보러가기</a>
-<br>
-
+    <h1>test</h1>
+    <br>
+    <a href="{% url 'main' %}">main</a>
+    <br>
+    <br>
+    <a href="{% url 'result' %}">최근 입력된 이미지 보러가기</a>
+    <br>
 
     <form action="" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
@@ -29,6 +25,5 @@
         <input class="btn btn-dark" type="submit" value="Submit" onclick="loading();">
     </form>
 </div>
-
 
 {% endblock %}

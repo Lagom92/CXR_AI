@@ -4,15 +4,16 @@ import os
 
 class Xray(models.Model):
     # User(작성자) 추가 예정
+    photo = models.ImageField(blank=True, null=True, upload_to="img/%Y%m%d")
     created_at = models.DateTimeField(auto_now_add=True)
     prediction = models.CharField(max_length=100, null=True, blank=True)
-    photo = models.ImageField(blank=True, null=True, upload_to="img/%Y%m%d")
     heatmap = models.ImageField(blank=True, null=True, upload_to="heat/%Y%m%d")
     
     # delete 오버라이딩
     def delete(self, *args, **kwargs):
         os.remove(os.path.join(settings.MEDIA_ROOT, self.photo.path))
+        os.remove(os.path.join(settings.MEDIA_ROOT, self.heatmap.path))
         super(Xray, self).delete(*args, **kwargs) 
 
-    def __str__(self):
-        return self.title
+    # def __str__(self):
+    #     return self.title
