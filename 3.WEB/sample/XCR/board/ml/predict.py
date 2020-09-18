@@ -1,9 +1,11 @@
 import tensorflow as tf 
+from tensorflow.keras.preprocessing import image
 import numpy as np 
 import cv2
 
+
 def getLabel(n):
-    LABELS = {'PNEUMONIA': 0, 'NORMAL': 1, 'COVID19': 2}    
+    LABELS = {'COVID19': 0, 'NORMAL': 1, 'PNEUMONIA': 2}
     for key, val in LABELS.items():
         if n == val:
             return key
@@ -11,22 +13,21 @@ def getLabel(n):
 
 
 # 예측 함수
-def diseasePredict(file_path):
-    ml_path = r"C:\Users\Lagom\lagom\CXR_AI\3. WEB\sample\XCR\board\ml\densenet_.h5"
+def diseasePredict(image_path):
+    model_path = r"boards\ml\Densenet.h5"
+    model = tf.keras.models.load_model(model_path)
 
-    image = cv2.imread(file_path)
-    image = cv2.resize(image, dsize=(224, 224), interpolation=cv2.INTER_LINEAR)
+    img = cv2.imread(image_path)
+    img = cv2.resize(img, dsize=(224,224))
+    img = img / 255.0
+    img = np.expand_dims(img, axis=0)
 
-    reshaped_image = image.reshape((-1, 224, 224, 3))
-
-    model = tf.keras.models.load_model(ml_path)
-
-    pred = model.predict(reshaped_image)
-    pred_code= np.argmax(pred,axis=1)
-
-    disease = getLabel(pred_code)
+    prediction = model.predict(img)
+    code = np.argmax(prediction)
+    disease = getLabel(code)
 
     return disease
+
 
 
 

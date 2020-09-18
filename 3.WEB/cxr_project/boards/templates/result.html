@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
-{% block body %}
+{% load static %}
 
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/loader.css' %}">
+<script src="{% static 'js/loader.js' %}"></script>
+
+<!-- loading image -->
+<div id="loading"></div>
+
+<div class="container">
+
+    
     <h1>Result</h1>
     <h3>가장 최근 입력 이미지</h3>
     <a href="{% url 'main' %}">home</a>
@@ -9,12 +19,12 @@
     <a href="{% url 'test' %}">이미지 입력하기</a>
     <br>
     
-    <h2>title : {{title}}</h2>
+    <!-- <h2>title : {{title}}</h2> -->
     <br/>
     
     {% if photo %}
-    {% comment %} <h3>predict: {{predict}}</h3>
-    <br> {% endcomment %}
+    <!-- {% comment %} <h3>predict: {{predict}}</h3> -->
+    <!-- <br> {% endcomment %} -->
     <h1>예측 결과KJY : {{predict1}}</h1> <br>
     <h1>예측 결과JJG : {{predict2}}</h1> <br>
     
@@ -24,4 +34,5 @@
     <img src="{{heatmap.url}}" width="300" height="300"> <br/><br/>
     {% endif %}
     
+</div>
 {% endblock %}
