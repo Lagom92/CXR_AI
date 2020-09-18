@@ -4,12 +4,10 @@ import os
 
 class Xray(models.Model):
     # User(작성자) 추가 예정
-    title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    prediction = models.CharField(max_length=100, null=True, blank=True)
     photo = models.ImageField(blank=True, null=True, upload_to="img/%Y%m%d")
-    comment = models.TextField(null=True, blank=True)
-    prediction = models.CharField(max_length=100)
-    # 필요시 predict 추가 
+    heatmap = models.ImageField(blank=True, null=True, upload_to="heat/%Y%m%d")
     
     # delete 오버라이딩
     def delete(self, *args, **kwargs):

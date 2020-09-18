@@ -13,21 +13,20 @@ def main(request):
 # 이미지 요청 
 def test(request):
 
-    return render(request, 'test.html')
-
-
-# 요청된 이미지 저장
-def detect(request):
     if request.method == 'POST':
         xray = Xray.objects.create(
-            title = request.POST['title'],
             photo = request.FILES['image']
         )
+
+        if xray.prediction is None:
+            predict = diseasePredict(xray.photo.path)
+            xray.prediction = predict
+            xray.save()
 
         return redirect('result')
 
     else:
-        return render(request, 'home.html')
+        return render(request, 'test.html')
 
 
 # 이미지 확인
@@ -41,9 +40,9 @@ def result(request):
         xray.save()
 
     context = {
-        'title': xray.title,
         'photo': xray.photo,
         'predict': xray.prediction,
     }
 
     return render(request, 'result.html', context)
+    
