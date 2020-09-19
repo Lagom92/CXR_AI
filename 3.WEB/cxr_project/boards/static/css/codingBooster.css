@@ -1,12 +1,13 @@
 /* 전체 영역을 통틀어서 스타일 정의*/
 @font-face {
-    font-family: 'GmarketSansBold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-family: 'Eoe_Zno_L';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_Zno_L.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}                                                
+}
+                                                                 
 *{
-	font-family: 'GmarketSansBold', serif; 
+	font-family: 'Eoe_Zno_L', serif; 
 }
 a{
 	color: #000000;
@@ -21,7 +22,6 @@ a:hover {
 .navbar-default {/*배경 색상*/
 	background-color: #000000;
 	border-color: #000000;
-	background :#000000;
 }
 .navbar-default .navbar-brand{ /* 네비게이션 제목 색상*/
 	color: #ffffff
@@ -62,10 +62,3 @@ a:hover {
 		color:#bbbbbb;
 	}
 }
-
-.jumbotron {
-    background-image: url('../img/jjumbo.jpg');
-    background-size: cover;
-    text-shadow: black 0.2em 0.2em 0.2em;
-    color: white;
-} 

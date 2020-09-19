@@ -4,11 +4,10 @@
 {% block body %}
 <!-- loading image -->
 <div id="loading"></div>
-
 <div class='container'>
     <br><br>
     <div class='jumbotron'>
-        <h1 class='text-center'>COVID-19 classifier를 소개합니다.</h1>
+        <h1 class='text-center'>COVID-19 classifier</h1>
         <p class='text-center'>COVID-19 classifier는 코로나 분류기입니다. 빠른 결과확인이 가능합니다.</p>
         <p class='text-center'><a class="btn btn-default bin-lg" href="{% url 'test' %}" role='button'>이미지 입력하기!</a></p>
     </div>
@@ -30,10 +29,10 @@
         </div>
     </div>
     <hr>
-    <div class='panel panel-danger'>
+    <div class='panel panel-default'>
         <div class='panel-heading'>
             <h3 class='panel-title'><span class='glyphicon glyphicon-pencil'></span>
-            &nbsp;&nbsp; COVID-19 결과 목록 </h3>
+            &nbsp;&nbsp; classifier 결과 목록 </h3>
         </div>
         <div class='panel-body'>
             <div class='media'>
