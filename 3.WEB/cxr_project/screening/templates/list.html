@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container">
+
+    <h1 style="margin: 20px; text-align: center;">선별 진료소 리스트 페이지</h1>
+
+    <form action="" method="get" style="margin-top: 50px; ">
+        <input type="text" name="q" value="{{ q }}">
+        <input type="submit" value="검색">
+    </form>
+
+    {% for screening in screenings %}
+    <hr>
+    <ul>
+        <li>{{screening.institutions}}</li>
+        <li>{{screening.city}} | {{screening.town}}</li>
+        <li>주소: {{screening.address}}</li>
+        <li>연락처: {{screening.phone}}</li>
+    </ul>
+    {% endfor %}
+    
+    <!--pagination-->
+    {% if screenings|length >= 60 %}
+    <nav aria-label="Page navigation example">
+        <ul class="d-flex justify-content-center my-4">
+            <h5>Page {{ screenings.number }} of {{ screenings.paginator.num_pages }}.</h5>
+        </ul>
+        <ul class="pagination justify-content-center text-dark">
+            {% if screenings.has_previous %}
+            <li class="page-item">
+                <a class="page-link text-dark" href="?page={{ screenings.previous_page_number }}">previous</a>
+            </li>
+            {% endif %}
+            <li class="page-item"><a class="page-link text-dark" href="?page=1">1</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=2">2</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=3">3</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=4">4</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=5">5</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=6">6</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=7">7</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=8">8</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=9">9</a></li>
+            <li class="page-item"><a class="page-link text-dark" href="?page=10">10</a></li>
+            {% if screenings.has_next %}
+            <li class="page-item">
+                <a class="page-link text-dark" href="?page={{ screenings.next_page_number }}">Next</a>
+            </li>    
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}
