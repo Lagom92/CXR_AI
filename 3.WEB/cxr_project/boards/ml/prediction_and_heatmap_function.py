@@ -5,6 +5,7 @@ from tensorflow import keras
 import tensorflow as tf
 import matplotlib.cm as cm
 import numpy as np 
+import matplotlib.pyplot as plt
 from keras.applications.inception_resnet_v2 import preprocess_input
 
 
@@ -132,10 +133,26 @@ def predict_CXR(image_path, model, feature_model):
     prediction = model.predict(feature_vector)[0]
     # print(prediction)
     unique_sorted_Y = ['COVID19','NORMAL','PNEUMONIA']
-    #확률의 예측값을 5개 선출 
-    # 가장 예측값이 높은 인덱스를 반환
-    index = prediction.argmax()
-    # labels에 저장 
-    label = unique_sorted_Y[index]
-    # print(label)
-    return label
+
+    top_3_predict = prediction.argsort()[::-1][:3]
+    #labels에 저장 
+    labels = [unique_sorted_Y[index] for index in top_3_predict]
+    color = ['blue'] * 3
+
+    text = prediction[top_3_predict][::-1] * 100
+    rects = plt.barh(range(3), prediction[top_3_predict][::-1] * 100, color = color)
+    plt.yticks(range(3), labels[::-1])
+    for i, rect in enumerate(rects):
+        plt.text(rect.get_width(), rect.get_y() + rect.get_height() / 2.0, str(int(text[i])) + '%', ha='left', va='center')
+    plt.draw()
+    plt.savefig('boards/prediction_plot.jpg')
+    plot = keras.preprocessing.image.load_img('boards/prediction_plot.jpg')
+    
+    return labels[0], plot
+
+# #확률의 예측값을 5개 선출 
+# # 가장 예측값이 높은 인덱스를 반환
+# index = prediction.argmax()
+# # labels에 저장 
+
+# label = unique_sorted_Y[index]
