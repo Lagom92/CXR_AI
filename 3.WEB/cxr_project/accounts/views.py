@@ -29,25 +29,28 @@ def signup(request):
         user = User.objects.filter(username=user_id)
 
         if (user_id and user_pw):
-            if (user_pw == user_pw_check):
+            if len(user)==0:
+                if (user_pw == user_pw_check):
 
-                user = User.objects.create_user(
-                    username=user_id,
-                    password=user_pw
-                )
+                    user = User.objects.create_user(
+                        username=user_id,
+                        password=user_pw
+                    )
 
-                auth.login(request, user)
+                    auth.login(request, user)
 
-                return redirect('main')
+                    return redirect('main')
+                else:
+                    context['error']['state'] = True
+                    context['error']['msg'] = ERROR_MSG['PW_CHECK']
+
             else:
                 context['error']['state'] = True
-                context['error']['msg'] = ERROR_MSG['PW_CHECK']
+                context['error']['msg'] = ERROR_MSG['ID_EXIST']
+        
         else:
             context['error']['state'] = True
-            context['error']['msg'] = ERROR_MSG['ID_EXIST']
-    else:
-        context['error']['state'] = True
-        context['error']['msg'] = ERROR_MSG['ID_PW_MISSING']
+            context['error']['msg'] = ERROR_MSG['ID_PW_MISSING']
 
     return render(request, 'signup.html', context)
     
