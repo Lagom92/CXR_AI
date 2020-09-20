@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
+ 
 
-# Create your views here.
 ERROR_MSG = {
     'ID_EXIST': '이미 사용 중인 아이디 입니다.',
     'ID_NOT_EXIST': '존재하지 않는 아이디 입니다',
@@ -81,8 +82,11 @@ def login(request):
         else:
             context['error']['state'] = True
             context['error']['msg'] = ERROR_MSG['ID_PW_MISSING']
+
     return render(request, 'login.html', context)
+
+@login_required
 def logout(request):
-    if request.method == 'POST':
-        auth.logout(request)
+    auth.logout(request)
+
     return redirect('main')

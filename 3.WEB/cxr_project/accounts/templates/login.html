@@ -1,21 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>login</h1>
-    {% if error.state %}
-        <h2>{{ error.msg }}</h2>
-    {% endif %}
-    <form action="{% url 'login' %}" method='POST'>
-        {% csrf_token %}
-        <input type="text" placeholder="아이디를 입력하세요" name="user_id"/>
-        <input type="password" placeholder="비밀번호를 입력하세요" name="user_pw"/>
-        <button type="submit">로그인하기</button>
-    </form>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name='viewport' content='width=device-width', initial-scale='1'>
+		<title>폐브리즈</title>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/codingBooster.css">
+		<link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3304/3304432.svg">
+	</head>
+	<body>
+		<style>
+		body {
+			color: #4e4e4e; /*member login 글씨 색*/
+			background: #F2F3F8; /*배경 색*/
+			font-family: 'Roboto', sans-serif;
+		}
+	    .form-control {
+			background: #E4E5F1; /*로그인 쓰는 곳 배경*/
+	        font-size: 16px;
+			border-color: transparent;
+			box-shadow: none !important;
+		}
+		.form-control:focus {
+			border-color: #AAABD3; /*아이디 쓰는 곳 클릭 시 아웃라인*/
+	        background: #CECFE5; /*아이디 쓰는 곳 클릭 시 배경색*/
+		}
+	    .form-control, .btn {        
+	        border-radius: 2px;
+	    }
+		.login-form {
+			width: 380px;
+			margin: 0 auto;
+		}
+	    .login-form h2 {
+	        margin: 0;
+	        padding: 30px 0;
+	        font-size: 34px;
+	    }
+		.login-form .avatar {
+			margin: 0 auto 30px;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			z-index: 9;
+			background: #AAABD3; /*동그라미 배경색*/
+			padding: 15px;
+			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+		}
+		.login-form .avatar img {
+			width: 100%;
+		}
+	    .login-form form {
+			color: #7a7a7a; /*remember me*/
+			border-radius: 4px;
+	    	margin-bottom: 20px;
+	        background: #fff;
+	        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	        padding: 30px;		
+	    }
+	    .login-form .btn {
+			font-size: 16px;
+			line-height: 26px;
+			min-width: 120px;
+	        font-weight: bold;
+			background: #AAABD3;/*sign in 배경색*/
+			border: none;		
+	    }
+		.login-form .btn:hover, .login-form .btn:focus{
+			background: #8989AA;/*sign in hover 시 배경색*/
+	        outline: none !important;
+		}
+		.checkbox-inline {
+			margin-top: 14px;
+		}
+		.checkbox-inline input {
+			margin-top: 3px;
+		}
+	    .login-form a {
+			color: #353866; /*sign up in 배경색*/
+		}	
+		.login-form a:hover {
+			text-decoration: underline;
+		}
+		.hint-text {
+			color: #999; /*dont have account 배경색*/
+	        text-align: center;
+			padding-bottom: 15px;
+		}
+	</style>
+		<style type="text/css">
+			.jumbotron {
+				background-image: url('images/jjumbo.jpg');
+				background-size: cover;
+				text-shadow: black 0.2em 0.2em 0.2em;
+				color: white;
+			} 
+		</style>
+		<nav class='navbar navbar-default'>
+			<div class="container-fluid">
+				<div class='navbar-header'>
+					<button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
+						<span class='sr-only'></span>
+						<span class='icon-bar'></span>
+						<span class='icon-bar'></span>
+						<span class='icon-bar'></span>
+					</button>
+					<a class='navbar-brand' href="index.html">폐브리즈</a>
+				</div>
+				<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+					<ul class='nav navbar-nav'>
+						<li><a href="test.html">Test</a></li>
+						<li><a href="history.html">History</a></li>
+						<li><a href="intro.html">Intro</a></li>
+					</ul>
+					<ul class='nav navbar-nav navbar-right'>
+						<li><a href="loginForm.html">log in</a></li>
+						<li><a href="registerForm.html">join us</a></li>
+						<li><a href="#">log out</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="login-form">
+			<h2 class="text-center">Member Login</h2>
+			
+			<!-- Login -->
+			<h1>login</h1>
+			{% if error.state %}
+				<h2>{{ error.msg }}</h2>
+			{% endif %}
+			<form action="{% url 'login' %}" method='POST'>
+				{% csrf_token %}
+				<input type="text" placeholder="아이디를 입력하세요" name="user_id"/>
+				<input type="password" placeholder="비밀번호를 입력하세요" name="user_pw"/>
+				<button type="submit">로그인하기</button>
+			</form>
+			<!-- End Login -->
 
-</body>
+		    <form action="/examples/actions/confirmation.php" method="post">
+				<div class="avatar">
+					<img src="images/friends.png" alt="Avatar">
+				</div>           
+		        <div class="form-group">
+		        	<input type="text" class="form-control input-lg" name="username" placeholder="Username" required="required">	
+		        </div>
+				<div class="form-group">
+		            <input type="password" class="form-control input-lg" name="password" placeholder="Password" required="required">
+		        </div>        
+		        <div class="form-group clearfix">
+					<label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+		            <button type="submit" class="btn btn-primary btn-lg pull-right">Sign in</button>
+		        </div>		
+		    </form>
+			<div class="hint-text">Don't have an account? <a href="registerForm.html">Sign up here</a></div>
+		</div>
+		<footer style="background-color: #000000; color: #ffffff">
+			<div class='container'>
+				<br>
+				<div class="row">
+					<div class='col-sm-5'><h4>막내 소개</h4><p>저는 폐브리즈의 막내 김주연 입니다. 인공지능 사관학교에서 공부중입니다. CXR을 이용하여 COVID 환자를 구분하는 프로그램을 제작중에 있습니다.</p></div>
+					<div class='col-sm-2' style="'text-align: center;"><h5>copyright &copy; 2020</h5><h5>김주연(Kim juyeon)</h5></div>
+					<div class='col-sm-2'><h4 style="text-align: center;"><span class='glyphicon glyphicon-ok'></span>&nbspby 폐브리즈</h4></div>
+					<div class = 'col-sm-3'><h4 style='text-align:center;'>네비게이션</h4>
+						<div class='list-group'>
+							<a href="test.html" class='list-group-item'>Test</a>
+							<a href="history.html" class='list-group-item'>History</a>
+							<a href="member.html" class='list-group-item'>Intro</a>
+						</div>
+					</div>	
+				</div>
+		</footer>
+		<div class='row'>
+			<div class='modal' id='modal' tabindex="-1">
+				<div class='modal-dialog'>
+					<div class='modal-content'>
+						<div class='modal-header'>
+							COVID-19의 특징
+							<button class="close" data-dismiss='modal'>&times;</button>
+						</div>
+						<div class='modal-body' style='text-align: center;'>
+							저희 서비스의 특징은 바로 빠른 코로나 양성여부 판단 입니다! <br>
+							특히 다양한 모델에 따른 결과가 연동되어 제공됩니다. <br><br>
+							<img src="images/비교.jpg" id='imagepreview' style='width: 256px; height:256px;'>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src='http://code.jquery.com/jquery-3.1.1.min.js'></script>
+		<script src='js/bootstrap.js'></script>
+	</body>
 </html>
