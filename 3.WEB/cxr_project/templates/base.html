@@ -41,9 +41,15 @@
           <li><a href="member.html">Intro</a></li>
         </ul>
         <ul class='nav navbar-nav navbar-right'>
-          <li><a href="loginForm.html">log in</a></li>
-          <li><a href="registerForm.html">join us</a></li>
-          <li><a href="#">log out</a></li>
+          {% if user.is_authenticated %}
+            <li><h3>{{user}}님 환영합니다.</h3></li>
+            <li><a href="{% url 'logout' %}">log out</a></li>
+            
+          {% else %}
+          <li><a href="{% url 'login' %}">log in</a></li>
+          <li><a href="{% url 'signup' %}">join us</a></li>
+          {% endif %}
+
         </ul>
       </div>
     </div>
