@@ -3,7 +3,7 @@ from django.conf import settings
 import os
 
 class Xray(models.Model):
-    # User(작성자) 추가 예정
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.CASCADE)
     photo = models.ImageField(blank=True, null=True, upload_to="img/%Y%m%d")
     created_at = models.DateTimeField(auto_now_add=True)
     prediction = models.CharField(max_length=100, null=True, blank=True)

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class='container'>
+    <div class='row text-center'><div> 
+    <h2>Result</h2></div>
+    <div style='float: right;'>
+        <button><a href="{% url 'history' user.id %}">목록</a></button>
+    </div>
+    <br>
+    <hr>
+    <h3>예측 결과(Inception) : {{xray.prediction}}</h3>
+    <p>{{xray.created_at}}</p>
+    
+    <div class='row'>
+        <div class='col-md-4'>
+            <div>
+                <br><br><br><br>
+                <h2>예측 확률 </h2>
+                    <img src="{{xray.plot.url}}" width="600" height="300"> <br/><br/>
+                </div>    
+            </div>
+        <div class='col-md-4'>
+            <h2>원본 X-ray</h2> 
+            <img src="{{xray.photo.url}}" width="300" height="300"> <br/><br/>
+        </div>
+        <div class='col-md-4'>
+        <div>
+            <h2>예상 병변 X-ray</h2>
+            <img src="{{xray.heatmap.url}}" width="300" height="300"> <br/><br/>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script src='http://code.jquery.com/jquery-3.1.1.min.js'></script>
+<script src='js/bootstrap.js'></script>
+{% endblock %}
