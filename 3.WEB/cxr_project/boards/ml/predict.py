@@ -33,13 +33,13 @@ def inception_resnt_predict_CXR_and_heatmap(image_path):
     model = load_model(model_path)
     feature_model = load_model(feature_model_path)
 
-    prediction = predict_CXR(image_path, model, feature_model)
+    prediction, plot = predict_CXR(image_path, model, feature_model)
 
     heatmap = make_gradcam_heatmap(image_path, model, feature_model)
 
     cam_image = show_CAM(image_path, heatmap, prediction)
 
-    return prediction, cam_image
+    return prediction, cam_image, plot
 
 #시영
 def getLabel(n):
