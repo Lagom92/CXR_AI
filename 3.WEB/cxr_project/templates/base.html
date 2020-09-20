@@ -6,8 +6,6 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width', initial-scale='1'>
     <title>폐브리즈</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/codingBooster.css">
     <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3304/3304432.svg">
     <!-- jquery -->
     <script src="//code.jquery.com/jquery.min.js"></script>
@@ -40,7 +38,7 @@
           {% if user.is_authenticated %}
           <li><a href="{% url 'history' user.id %}">History</a></li>
           {% endif %}
-          <li><a href="member.html">Intro</a></li>
+          <li><a href="{% url 'member' %}">Intro</a></li>
         </ul>
         <ul class='nav navbar-nav navbar-right'>
           {% if user.is_authenticated %}

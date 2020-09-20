@@ -9,5 +9,6 @@ urlpatterns = [
     path('history/<int:user_id>/', views.history, name='history'),
     path('history/<int:user_id>/deatil/<int:id>/', views.detail, name='detail'),
     path('delete/<int:user_id>/<int:id>/', views.delete, name='delete'),
-    path('visualizationel/', views.visualization, name='visualization'),
+    path('visualization/', views.visualization, name='visualization'),
+    path('member/', views.member, name='member'),
 ]

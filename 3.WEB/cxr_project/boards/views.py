@@ -103,3 +103,7 @@ def delete(request, user_id, id):
         xray.delete()
         return redirect('main')
 
+def member(request):
+
+    return render(request, 'member.html')
+
