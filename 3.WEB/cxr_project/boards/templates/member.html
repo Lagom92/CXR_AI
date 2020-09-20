@@ -1,226 +1,154 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name='viewport' content='width=device-width', initial-scale='1'>
-		<title>폐브리즈</title>
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/codingBooster.css">
-		<link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/3304/3304432.svg">
-	</head>
-	<body>
-		<style type="text/css">
-			.jumbotron {
-				background-image: url('images/jjumbo.jpg');
-				background-size: cover;
-				text-shadow: black 0.2em 0.2em 0.2em;
-				color: white;
-			} 
-		</style>
-		<style type="text/css">
-			blockquote {
-				background: #f9f9f9;
-				border-left: 10px solid #cccccc;
-				margin: 1.5em 10px;
-				padding: 0.5em 10px;
-				quotes: '\201C''\201D''\2018''\2019'
-			}
-			blockquote:before {
-				color: #cccccc;
-				content: open-quote;
-				font-size: 3em;
-				line-height: 0.1em;
-				vertical-align: -0.4em;
-			}
-			blockquote:after {
-				color: #cccccc;
-				content: close-quote;
-				font-size: 3em;
-				line-height: 0.1em;
-				vertical-align: -0.4em;
-			}
+{% extends 'base.html' %}
+{% load static %}
 
-		</style>
-		<nav class='navbar navbar-default'>
-			<div class="container-fluid">
-				<div class='navbar-header'>
-					<button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
-						<span class='sr-only'></span>
-						<span class='icon-bar'></span>
-						<span class='icon-bar'></span>
-						<span class='icon-bar'></span>
-					</button>
-					<a class='navbar-brand' href="index.html">폐브리즈</a>
+{% block body %}
+<style type="text/css">
+	.jumbotron {
+		background-image: url('images/jjumbo.jpg');
+		background-size: cover;
+		text-shadow: black 0.2em 0.2em 0.2em;
+		color: white;
+	} 
+</style>
+<style type="text/css">
+	blockquote {
+		background: #f9f9f9;
+		border-left: 10px solid #cccccc;
+		margin: 1.5em 10px;
+		padding: 0.5em 10px;
+		quotes: '\201C''\201D''\2018''\2019'
+	}
+	blockquote:before {
+		color: #cccccc;
+		content: open-quote;
+		font-size: 3em;
+		line-height: 0.1em;
+		vertical-align: -0.4em;
+	}
+	blockquote:after {
+		color: #cccccc;
+		content: close-quote;
+		font-size: 3em;
+		line-height: 0.1em;
+		vertical-align: -0.4em;
+	}
+
+</style>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-xs-12'>
+			<div class='panel panel-primary'>
+				<div class='panel-heading'>
+					<h3 class='panel-title'>
+						<span class='glyphicon glyphicon-tags'></span>
+						&nbsp;&nbsp;폐브리즈의 팀원들을 소개합니다!
+					</h3>
 				</div>
-				<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
-					<ul class='nav navbar-nav'>
-						<li><a href="test.html">Test</a></li>
-						<li><a href="history.html">History</a></li>
-						<li><a href="intro.html">Intro</a></li>
-					</ul>
-					<ul class='nav navbar-nav navbar-right'>
-						<li><a href="loginForm.html">log in</a></li>
-						<li><a href="registerForm.html">join us</a></li>
-						<li><a href="#">log out</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<div class='container'>
-			<div class='row'>
-				<div class='col-xs-12'>
-					<div class='panel panel-primary'>
-						<div class='panel-heading'>
-							<h3 class='panel-title'>
-								<span class='glyphicon glyphicon-tags'></span>
-								&nbsp;&nbsp;폐브리즈의 팀원들을 소개합니다!
-							</h3>
+				<div class='panel-body'>
+					<div class='media'>
+						<div class='media-left'>
+							<a href="#">
+								<img class="media-object" src="{% static 'img/시영.png' %}" alt='팀장 이미지'>
+							</a>
 						</div>
-						<div class='panel-body'>
-							<div class='media'>
-								<div class='media-left'>
-									<a href="#">
-										<img class="media-object" src='images/시영.png' alt='팀장 이미지'>
-									</a>
-								</div>
-								<div class='media-body'>
-									<h4 class='media-heading'>양시영</h4><br>
-										폐브리즈의 팀장 양시영입니다. 
-								</div>
-							</div>
-							<hr>
-							<div class='media'>
-								<div class='media-left'>
-									<a href="#">
-										<img class="media-object" src='images/주연.png' alt='팀원김주연 이미지'>
-									</a>
-								</div>
-								<div class='media-body'>
-									<h4 class='media-heading'>김주연</h4><br>
-										폐브리즈의 팀원 김주연입니다. 
-								</div>
-							</div>
-							<hr>
-							<div class='media'>
-								<div class='media-left'>
-									<a href="#">
-										<img class="media-object" src='images/진혁.png' alt='팀원김진혁 이미지'>
-									</a>
-								</div>
-								<div class='media-body'>
-									<h4 class='media-heading'>김진혁</h4><br>
-										폐브리즈의 팀원 김진혁입니다. 
-								</div>
-							</div>
-							<hr>
-							<div class='media'>
-								<div class='media-left'>
-									<a href="#">
-										<img class="media-object" src='images/진균.png' alt='팀원정진균 이미지'>
-									</a>
-								</div>
-								<div class='media-body'>
-									<h4 class='media-heading'>정진균</h4><br>
-										폐브리즈의 팀원 정진균입니다. 
-								</div>
-							</div>
-							<hr>
-							<div class='media'>
-								<div class='media-left'>
-									<a href="#">
-										<img class="media-object" src='images/준범.png' alt='팀원최준범 이미지'>
-									</a>
-								</div>
-								<div class='media-body'>
-									<h4 class='media-heading'>최준범</h4><br>
-										폐브리즈의 팀원 최준범입니다. 
-								</div>
-							</div>
-							<hr>
-						</div>
-						<table class="table">
-							<thead>
-								<tr>
-									<th>팀원명</th>
-									<th>팀원 번호</th>
-									<th>position</th>
-									<th>생일</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>양시영</td>
-									<td>1</td>
-									<td><a href="model.html"> ML(모델 구현 및 평가) - DensNet</a></td>
-									<td>2020-09-17</td>
-								</tr>
-								<tr>
-									<td>김주연</td>
-									<td>2</td>
-									<td><a href="model.html"> ML(모델 구현 및 평가) - ResNet50</a></td>
-									<td>2020-09-17</td>
-								</tr>
-								<tr>
-									<td>김진혁</td>
-									<td>3</td>
-									<td><a href="model.html">data 수집 및 전처리/배포</a></td>
-									<td>2020-09-17</td>
-								</tr>
-								<tr>
-									<td>정진균</td>
-									<td>4</td>
-									<td><a href="model.html"> ML(모델 구현 및 평가) - InceptionResNetV2 </a></td>
-									<td>2020-09-17</td>
-								</tr>
-								<tr>
-									<td>최준범</td>
-									<td>5</td>
-									<td><a href="model.html">웹 구현(Django)</a></td>
-									<td>2020-09-17</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class='panel-footer'>
-							<blockquote>&nbsp;If you want to go quickly, go alone, if you want to go far, go together! &nbsp;</blockquote>
+						<div class='media-body'>
+							<h4 class='media-heading'>양시영</h4><br>
+								폐브리즈의 팀장 양시영입니다. 
 						</div>
 					</div>
+					<hr>
+					<div class='media'>
+						<div class='media-left'>
+							<a href="#">
+								<img class="media-object" src="{% static 'img/주연.png' %}" alt='팀원김주연 이미지'>
+							</a>
+						</div>
+						<div class='media-body'>
+							<h4 class='media-heading'>김주연</h4><br>
+								폐브리즈의 팀원 김주연입니다. 
+						</div>
+					</div>
+					<hr>
+					<div class='media'>
+						<div class='media-left'>
+							<a href="#">
+								<img class="media-object" src="{% static 'img/진혁.png' %}" alt='팀원김진혁 이미지'>
+							</a>
+						</div>
+						<div class='media-body'>
+							<h4 class='media-heading'>김진혁</h4><br>
+								폐브리즈의 팀원 김진혁입니다. 
+						</div>
+					</div>
+					<hr>
+					<div class='media'>
+						<div class='media-left'>
+							<a href="#">
+								<img class="media-object" src="{% static 'img/진균.png' %}" alt='팀원정진균 이미지'>
+							</a>
+						</div>
+						<div class='media-body'>
+							<h4 class='media-heading'>정진균</h4><br>
+								폐브리즈의 팀원 정진균입니다. 
+						</div>
+					</div>
+					<hr>
+					<div class='media'>
+						<div class='media-left'>
+							<a href="#">
+								<img class="media-object" src="{% static 'img/준범.png' %}" alt='팀원최준범 이미지'>
+							</a>
+						</div>
+						<div class='media-body'>
+							<h4 class='media-heading'>최준범</h4><br>
+								폐브리즈의 팀원 최준범입니다. 
+						</div>
+					</div>
+					<hr>
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>팀원명</th>
+							<th>position</th>
+							<th>github address</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>양시영</td>
+							<td>ML(모델 구현 및 평가) - DensNet</td>
+							<td><a href="https://github.com/Lagom92" target='_blank'>https://github.com/Lagom92</a></td>
+						</tr>
+						<tr>
+							<td>김주연</td>
+							<td>ML(모델 구현 및 평가) - ResNet50</td>
+							<td><a href="https://github.com/superjuyeon" target='_blank'>https://github.com/superjuyeon</a></td>
+						</tr>
+						<tr>
+							<td>김진혁</td>
+							<td>data 수집 및 전처리/배포</td>
+							<td><a href="https://github.com/kimjinhyuk" target='_blank'>https://github.com/kimjinhyuk</a></td>
+						</tr>
+						<tr>
+							<td>정진균</td>
+							<td>ML(모델 구현 및 평가) - InceptionResNetV2 </td>
+							<td><a href="https://github.com/whiteBerryJ" target='_blank'>https://github.com/whiteBerryJ</a></td>
+						</tr>
+						<tr>
+							<td>최준범</td>
+							<td>웹 구현(Django)</td>
+							<td><a href="https://github.com/Choi-joonbeom" target='_blank'>https://github.com/Choi-joonbeom</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class='panel-footer'>
+					<blockquote>&nbsp;If you want to go quickly, go alone, if you want to go far, go together! &nbsp;</blockquote>
 				</div>
 			</div>
 		</div>
-		<footer style="background-color: #000000; color: #ffffff">
-			<div class='container'>
-				<br>
-				<div class="row">
-					<div class='col-sm-5'><h4>막내 소개</h4><p>저는 폐브리즈의 막내 김주연 입니다. 인공지능 사관학교에서 공부중입니다. CXR을 이용하여 COVID 환자를 구분하는 프로그램을 제작중에 있습니다.</p></div>
-					<div class='col-sm-2' style="'text-align: center;"><h5>copyright &copy; 2020</h5><h5>김주연(Kim juyeon)</h5></div>
-					<div class='col-sm-2'><h4 style="text-align: center;"><span class='glyphicon glyphicon-ok'></span>&nbspby 폐브리즈</h4></div>
-					<div class = 'col-sm-3'><h4 style='text-align:center;'>네비게이션</h4>
-						<div class='list-group'>
-							<a href="test.html" class='list-group-item'>Test</a>
-							<a href="history.html" class='list-group-item'>History</a>
-							<a href="member.html" class='list-group-item'>Intro</a>
-						</div>
-					</div>	
-				</div>
-		</footer>
-		<div class='row'>
-			<div class='modal' id='modal' tabindex="-1">
-				<div class='modal-dialog'>
-					<div class='modal-content'>
-						<div class='modal-header'>
-							COVID-19의 특징
-							<button class="close" data-dismiss='modal'>&times;</button>
-						</div>
-						<div class='modal-body' style='text-align: center;'>
-							저희 서비스의 특징은 바로 빠른 코로나 양성여부 판단 입니다! <br>
-							특히 다양한 모델에 따른 결과가 연동되어 제공됩니다. <br><br>
-							<img src="images/비교.jpg" id='imagepreview' style='width: 256px; height:256px;'>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<script src='http://code.jquery.com/jquery-3.1.1.min.js'></script>
-		<script src='js/bootstrap.js'></script>
-	</body>
-</html>
+	</div>
+</div>
+
+{% endblock %}
