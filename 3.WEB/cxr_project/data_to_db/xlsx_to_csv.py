@@ -2,7 +2,7 @@
 import openpyxl
 import csv
 
-xlsx_path = "./선별진료소.xlsx"
+xlsx_path = r"C:\Users\smile\ai_team\폐브리즈\CXR_AI\3.WEB\cxr_project\data_to_db\선별진료소.xlsx"
 wb = openpyxl.load_workbook(xlsx_path)
 sheet = wb['선별진료소(전체)']
 max_row = sheet.max_row

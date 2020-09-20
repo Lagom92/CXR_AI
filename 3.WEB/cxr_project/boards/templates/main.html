@@ -13,28 +13,28 @@
     </div>
     <div class='row'>
         <div class='col-md-4'>
-        <div align='center'>
+        <div style="text-align:center">
             <h4>여러 모델의 결과를 비교해 보세요!</h4>
             <p>폐브리즈에서 진행한 Resnet / Densnet / InceptionResnet model의 결과를 비교해 볼 수 있습니다. loss와 accuracy의 값을 비교해보세요!</p>
-            <p><a class='btn btn-danger center' href="{% url 'model' %}">자세히 알아보기</a></p>
+            <p><a style="background:rgb(226, 192, 132);" class='btn btn-default center' href="{% url 'model' %}">자세히 알아보기</a></p>
             </div>
         </div>
         <div class='col-md-4'>
-        <div align='center'>
+        <div style="text-align:center">
             <h4>선별진료소 찾기</h4>
             <p>폐브리즈는 전국에 있는 모든 선별진료소의 위치를 제공합니다! 아래 버튼을 눌러 빠르게 알아보세요!</p><br>
-            <p><a class='btn btn-default' href="{% url 'list' %}">자세히 알아보기</a></p>
-
+            <p><a style="background:rgb(226, 192, 132);" class='btn btn-default' href="{% url 'list' %}">자세히 알아보기</a></p>
+            </div>   
         </div>
         <div class='col-md-4'>
-        <div align='center'>
+        <div style="text-align:center">
             <h4>폐브리즈 시각화 프로젝트</h4>
             <p>서울시 코로나 확진자 현황 데이터를 활용한 교회발 집단감염을 제외한 확진자수 추론자료 시각화진행 자료를 보고싶다면?</p>
-                <p><a class='btn btn-default' href='visualization.html'>자세히 알아보기</a></p>
+            <p><a style="background:rgb(226, 192, 132);" class='btn btn-default' href='visualization.html'>자세히 알아보기</a></p>
             </div>    
         </div>
-    </div>
-    <hr>
+        </div>
+        <hr>
     <div class='panel panel-default'>
         <div class='panel-heading'>
             <h3 class='panel-title'><span class='glyphicon glyphicon-pencil'></span>
@@ -72,5 +72,7 @@
             </div>
         </div>
     </div>
+    </div>
 </div>
+
 {% endblock %}
