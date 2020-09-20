@@ -8,4 +8,5 @@ urlpatterns = [
     path('model/', views.model, name='model'),
     path('history/<int:user_id>/', views.history, name='history'),
     path('history/<int:user_id>/deatil/<int:id>/', views.detail, name='detail'),
+    path('visualizationel/', views.visualization, name='visualization'),
 ]

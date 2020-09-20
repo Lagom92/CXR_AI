@@ -118,7 +118,6 @@ def show_CAM(img_path, heatmap, prediction):
 def predict_CXR(image_path, model, feature_model):
 
     img_size = (299, 299)
-
     # 이미지 불러오기 및 이미지 크기 조정
     img = keras.preprocessing.image.load_img(image_path, target_size=img_size)
     # 이미지를 array로 변경
@@ -143,7 +142,7 @@ def predict_CXR(image_path, model, feature_model):
     rects = plt.barh(range(3), prediction[top_3_predict][::-1] * 100, color = color)
     plt.yticks(range(3), labels[::-1])
     for i, rect in enumerate(rects):
-        plt.text(rect.get_width(), rect.get_y() + rect.get_height() / 2.0, str(int(text[i])) + '%', ha='left', va='center')
+        plt.text(rect.get_width(), rect.get_y() + rect.get_height() / 2.0, str(round(text[i], 2)) + '%', ha='left', va='center')
     plt.draw()
     plt.savefig('boards/prediction_plot.jpg')
     plot = keras.preprocessing.image.load_img('boards/prediction_plot.jpg')

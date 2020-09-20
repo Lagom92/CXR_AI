@@ -63,6 +63,7 @@ def model(request):
 
     return render(request, 'model.html')
 
+
 @login_required
 def history(request, user_id):
     if request.user.id != user_id:
@@ -87,3 +88,9 @@ def detail(request, user_id, id):
         }
 
     return render(request, 'detail.html', context)
+
+
+def visualization(request):
+
+    return render(request, 'visualization.html')
+
