@@ -28,7 +28,9 @@
                 <img src="{{xray.plot.url}}" width="400" height="300"> <br/><br/>
             </div>    
         </div>
+        <a href="{% url 'delete' user.id xray.id %}" style="float: right;"><button>삭제하기</button></a>
     </div>
+    <br>
 </div>
 </div>
 

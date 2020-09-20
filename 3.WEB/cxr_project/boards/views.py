@@ -94,3 +94,12 @@ def visualization(request):
 
     return render(request, 'visualization.html')
 
+@login_required
+def delete(request, user_id, id):
+    if request.user.id != user_id:
+        return redirect('main')
+    else:
+        xray = Xray.objects.get(id=id)
+        xray.delete()
+        return redirect('main')
+
