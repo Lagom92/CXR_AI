@@ -59,3 +59,9 @@ def result(request):
 def model(request):
 
     return render(request, 'model.html')
+
+
+def visualization(request):
+
+    return render(request, 'visualization.html')
+
