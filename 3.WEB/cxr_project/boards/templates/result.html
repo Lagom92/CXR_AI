@@ -53,11 +53,8 @@
             <div class='col-md-4'>
                 <div>
                     <br><br><br><br>
-                    {% if photo %}
-                    <h4>예측 결과(ResNet) : {{predict1}}</h4> <br>
-                    <h4>예측 결과(Inception) : {{predict2}}</h4> <br>
-                    <h4>예측 결과(DenseNet) : {{predict3}}</h4> <br>
-                    {% endif %}
+                    <h2>예측 확률 </h2>
+                     <img src="{{plot.url}}" width="600" height="300"> <br/><br/>
                     </div>    
                 </div>
             <div class='col-md-4'>
