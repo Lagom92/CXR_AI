@@ -3,26 +3,79 @@
 
 {% block body %}
 
+<style>
+.input {
+    width: 600px;
+    margin: 0 auto;
+}
+.input h2 {
+    margin: 0;
+    padding: 30px 0;
+    font-size: 34px;
+}
+.input form {
+    color: #7a7a7a; 
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0px 2px 2px rgba(107, 74, 74, 0.3);
+    padding: 30px;		
+}
+.input .btn {
+    font-size: 16px;
+    line-height: 26px;
+    min-width: 120px;
+    font-weight: bold;
+    background: #e6d4b4;/*sign in 배경색*/
+    border: none;		
+}
+.input .btn:hover, .login-form .btn:focus{
+    background: #e2c084;/*sign in hover 시 배경색*/
+        outline: none !important;
+}
+.input[type=file] {
+    margin: 0 auto;
+}     
+</style>
 
 <!-- loading image -->
 <div id="loading"></div>
 
 <div class="container"> 
     <div class='row text-center'>
-        <h2>Result</h2><hr> </div>
-        <div class='input'>
-            <h3>{{created_at}}</h3>
-            {% if photo %}
-            <h4>예측 결과(ResNet) : {{predict1}}</h4> <br>
-            <h4>예측 결과(Inception) : {{predict2}}</h4> <br>
-            <h4>예측 결과(DenseNet) : {{predict3}}</h4> <br>
-            <h2>원본 X-ray</h2>
-            <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
-            <h2>예상 병변 X-ray</h2>
-            <img src="{{heatmap.url}}" width="300" height="300"> <br/><br/>
-            {% endif %}
+        <div> <h2>Result</h2></div>
+        <hr>
+        {% if photo %}
+        <h3>예측 결과(Inception) : {{predict2}}</h3>
+        {% endif %}
+        
+        <div class='row'>
+            <div class='col-md-4'>
+                <div>
+                    <br><br><br><br>
+                    {% if photo %}
+                    <h4>예측 결과(ResNet) : {{predict1}}</h4> <br>
+                    <h4>예측 결과(Inception) : {{predict2}}</h4> <br>
+                    <h4>예측 결과(DenseNet) : {{predict3}}</h4> <br>
+                    {% endif %}
+                    </div>    
+                </div>
+            <div class='col-md-4'>
+                <h2>원본 X-ray</h2> 
+                <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
+            </div>
+            <div class='col-md-4'>
+            <div>
+                <h2>예상 병변 X-ray</h2>
+                <img src="{{heatmap.url}}" width="300" height="300"> <br/><br/>
+                </div>
+            </div>
         </div>
+
+
     </div>
-    
+        
+    </div>
+    <br><br>
 </div>
 {% endblock %}
