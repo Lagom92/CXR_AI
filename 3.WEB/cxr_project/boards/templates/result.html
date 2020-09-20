@@ -10,18 +10,19 @@
 <div class="container"> 
     <div class='row text-center'>
         <h2>Result</h2><hr> </div>
-        <h3>이미지 입력 결과</h3>
-    
-    {% if photo %}
-    <h4>예측 결과(ResNet) : {{predict1}}</h4> <br>
-    <h4>예측 결과(Inception) : {{predict2}}</h4> <br>
-    <h4>예측 결과(DenseNet) : {{predict3}}</h4> <br>
-    <h3>{{created_at}}</h3>
-    <h2>원본 X-ray</h2>
-    <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
-    <h2>예상 병변</h2>
-    <img src="{{heatmap.url}}" width="300" height="300"> <br/><br/>
-    {% endif %}
+        <div class='input'>
+            <h3>{{created_at}}</h3>
+            {% if photo %}
+            <h4>예측 결과(ResNet) : {{predict1}}</h4> <br>
+            <h4>예측 결과(Inception) : {{predict2}}</h4> <br>
+            <h4>예측 결과(DenseNet) : {{predict3}}</h4> <br>
+            <h2>원본 X-ray</h2>
+            <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
+            <h2>예상 병변 X-ray</h2>
+            <img src="{{heatmap.url}}" width="300" height="300"> <br/><br/>
+            {% endif %}
+        </div>
+    </div>
     
 </div>
 {% endblock %}
