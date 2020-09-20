@@ -123,6 +123,20 @@
 		</nav>
 		<div class="login-form">
 			<h2 class="text-center">Member Login</h2>
+			
+			<!-- Login -->
+			<h1>login</h1>
+			{% if error.state %}
+				<h2>{{ error.msg }}</h2>
+			{% endif %}
+			<form action="{% url 'login' %}" method='POST'>
+				{% csrf_token %}
+				<input type="text" placeholder="아이디를 입력하세요" name="user_id"/>
+				<input type="password" placeholder="비밀번호를 입력하세요" name="user_pw"/>
+				<button type="submit">로그인하기</button>
+			</form>
+			<!-- End Login -->
+
 		    <form action="/examples/actions/confirmation.php" method="post">
 				<div class="avatar">
 					<img src="images/friends.png" alt="Avatar">

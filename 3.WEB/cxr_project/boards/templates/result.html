@@ -51,16 +51,6 @@
         
         <div class='row'>
             <div class='col-md-4'>
-                <div>
-                    <br><br><br><br>
-                    {% if photo %}
-                    <h4>예측 결과(ResNet) : {{predict1}}</h4> <br>
-                    <h4>예측 결과(Inception) : {{predict2}}</h4> <br>
-                    <h4>예측 결과(DenseNet) : {{predict3}}</h4> <br>
-                    {% endif %}
-                    </div>    
-                </div>
-            <div class='col-md-4'>
                 <h2>원본 X-ray</h2> 
                 <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
             </div>
@@ -69,6 +59,12 @@
                 <h2>예상 병변 X-ray</h2>
                 <img src="{{heatmap.url}}" width="300" height="300"> <br/><br/>
                 </div>
+            </div>
+            <div class='col-md-4'>
+                <div>
+                    <h2>예측 확률 </h2>
+                    <img src="{{plot.url}}" width="400" height="300"> <br/><br/>
+                </div>    
             </div>
         </div>
 
