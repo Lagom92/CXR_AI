@@ -50,3 +50,7 @@ def result(request):
     }
 
     return render(request, 'result.html', context)
+
+def model(request):
+
+    return render(request, 'model.html')
