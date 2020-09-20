@@ -61,7 +61,7 @@ def make_gradcam_heatmap(img_path, classifier_model, last_conv_layer_model):
     heatmap = np.maximum(heatmap, 0) / np.max(heatmap)
 
     # 보정 -- 이미지의 최 외곽부 모두 0
-    a = np.vstack((np.zeros(heatmap[:1].shape),heatmap[1:-1]))
+    a = np.vstack((np.zeros(heatmap[:2].shape),heatmap[2:-1]))
     a = np.vstack((a[:-1],np.zeros(heatmap[-1:].shape)))
     for i in a:
         i[0] = 0

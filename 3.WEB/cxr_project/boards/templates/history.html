@@ -10,9 +10,8 @@
 		<hr>
 		<li>{{xray.prediction}}</li>
 		<li>{{xray.created_at}}</li>
-		<button>
-			<a href="{% url 'detail' user.id xray.id %}">상세보기</a>
-		</button>
+		<a href="{% url 'detail' user.id xray.id %}"><button>상세보기</button></a>
+	
 		
 	{% endfor%}
 	<hr>
