@@ -5,6 +5,8 @@ from tensorflow import keras
 import tensorflow as tf
 import matplotlib.cm as cm
 import numpy as np 
+import matplotlib.pyplot as plt
+import os
 from keras.applications.inception_resnet_v2 import preprocess_input
 
 
@@ -59,7 +61,7 @@ def make_gradcam_heatmap(img_path, classifier_model, last_conv_layer_model):
     heatmap = np.maximum(heatmap, 0) / np.max(heatmap)
 
     # 보정 -- 이미지의 최 외곽부 모두 0
-    a = np.vstack((np.zeros(heatmap[:1].shape),heatmap[1:-1]))
+    a = np.vstack((np.zeros(heatmap[:2].shape),heatmap[2:-1]))
     a = np.vstack((a[:-1],np.zeros(heatmap[-1:].shape)))
     for i in a:
         i[0] = 0
@@ -117,7 +119,6 @@ def show_CAM(img_path, heatmap, prediction):
 def predict_CXR(image_path, model, feature_model):
 
     img_size = (299, 299)
-
     # 이미지 불러오기 및 이미지 크기 조정
     img = keras.preprocessing.image.load_img(image_path, target_size=img_size)
     # 이미지를 array로 변경
@@ -132,10 +133,29 @@ def predict_CXR(image_path, model, feature_model):
     prediction = model.predict(feature_vector)[0]
     # print(prediction)
     unique_sorted_Y = ['COVID19','NORMAL','PNEUMONIA']
-    #확률의 예측값을 5개 선출 
-    # 가장 예측값이 높은 인덱스를 반환
-    index = prediction.argmax()
-    # labels에 저장 
-    label = unique_sorted_Y[index]
-    # print(label)
-    return label
+
+    top_3_predict = prediction.argsort()[::-1][:3]
+    print(top_3_predict)
+    #labels에 저장 
+    labels = [unique_sorted_Y[index] for index in top_3_predict]
+    color = ['blue'] * 3
+
+
+    # show portion
+    text = []
+    text = prediction[top_3_predict][::-1] * 100
+    print(text)
+    rects = plt.barh(range(3), text, color = color)
+    plt.yticks(np.arange(3), labels[::-1], rotation=45)
+    plt.xlim(0,100)
+
+    # plt.rc('font', size=10)
+    for i, rect in enumerate(rects):
+        plt.text(rect.get_width(), rect.get_y() + rect.get_height() / 2.0, str(round(text[i], 1)) + '%', ha='left', va='center')
+    plt.draw()
+    plt.savefig('media/prediction_plot.jpg')
+    plot = keras.preprocessing.image.load_img('media/prediction_plot.jpg')
+    os.remove('media/prediction_plot.jpg')
+    plt.clf()
+    
+    return labels[0], plot

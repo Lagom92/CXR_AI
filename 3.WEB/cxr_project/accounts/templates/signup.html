@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<style>
+	body {
+		color: #4e4e4e;
+		background: #F2F3F8; /*배경 색*/
+		font-family: 'Roboto', sans-serif;
+	}
+	.form-control {
+		min-height: 16px;
+		box-shadow: none;
+		border-color: #897A86;
+		background: #E2DDE1;
+	}
+	.form-control {
+	background: #E4E5F1; /*로그인 쓰는 곳 배경*/
+	font-size: 16px;
+	border-color: transparent;
+	box-shadow: none !important;
+	}
+	.form-control:focus {
+	border-color: #AAABD3; /*아이디 쓰는 곳 클릭 시 아웃라인*/
+	background: #CECFE5; /*아이디 쓰는 곳 클릭 시 배경색*/
+	}
+	.form-control, .btn {        
+	border-radius: 2px;
+	}
+	.signup-form {
+		width: 380px;
+		margin: 0 auto;
+	}
+	.signup-form h2 {
+		color: #333;
+		font-size: 34px;
+		margin: 0;
+		padding: 30px 0;
+	}
+
+	.signup-form .avatar {
+	margin: 0 auto 30px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	z-index: 9;
+	background: #AAABD3; /*동그라미 배경색*/
+	padding: 15px;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+	}
+	.signup-form .avatar img {
+	width: 100%;
+	}
+	.signup-form form {
+		margin-bottom: 20px;
+		background: #fff;
+		border: 1px solid #f4f4f4; /*네모 테두리*/
+		box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+		padding: 30px;
+	}
+	.signup-form .form-group {
+		margin-bottom: 20px;
+	}
+	.signup-form label {
+		font-weight: normal;
+		font-size: 13px;
+	}
+	.signup-form input[type="checkbox"] {
+		margin-top: 2px;
+	}    
+	.signup-form .btn {        
+		font-size: 16px;
+		font-weight: bold;
+		background: #AAABD3;/*sign in 배경색*/
+		border: none;
+		min-width: 120px;
+		outline: none !important;
+		line-height: 26px;
+	}
+	.signup-form .btn:hover, .signup-form .btn:focus {
+		background: #8989AA;/*sign in hover 시 배경색*/
+	}
+	.signup-form a {
+		color: #353866; /*sign up here 배경색*/
+		text-decoration: none;
+	}	
+	.signup-form a:hover {
+		text-decoration: underline;
+	}
+</style>
+
+
+<div class="signup-form">
+	<h2 class="text-center">Sign up</h2>
+	<!-- Sign up -->
+	{% if error.state %}
+		<p>{{ error.msg }}</p>
+	{% endif %}
+	<form action="{% url 'signup' %}" method="post">
+		{% csrf_token %}
+		<div class="avatar">
+			<img src="{% static 'img/united.png' %}" alt="약속">
+		</div>
+		<div class="form-group">
+			<input type="user_id" class="form-control" name="user_id" placeholder="Username" />
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control" name="user_pw" placeholder="Password" />
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control" name="user_pw_check" placeholder="Confirm Password" />
+		</div>        
+		<div style="text-align:center" class="form-group">
+			<button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+		</div>
+	</form>
+	<div class="text-center">Already have an account? <a href="{% url 'login' %}">Login here</a></div> <br>	
+	<!-- End Sign up -->
+</div>
+
+
+{% endblock %}
