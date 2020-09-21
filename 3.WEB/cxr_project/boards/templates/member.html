@@ -8,6 +8,7 @@
 		background-size: cover;
 		text-shadow: black 0.2em 0.2em 0.2em;
 		color: white;
+		width: 100%;
 	} 
 </style>
 <style type="text/css">
@@ -34,22 +35,23 @@
 	}
 
 </style>
+<div class='col-xs-12'>
 <div class='row'>
 	<div style="text-align: center;"><h2>폐브리즈 family</h2></div>
 	<hr>
 <div class='container'>
 	<div class='row'>
 		<br>
-		<div class='col-xs-12'>
-			<div class='panel panel-default'>
-				<div style="background:#F8C67F;" class='panel-heading'>
+		<div class='panel panel-default'>
+			<div class='table-responsive' style="width: 100%;">
+				<div style="background:#F8C67F; width: 100%;" class='panel-heading'>
 					<h3 class='panel-title'>
 						<span class='glyphicon glyphicon-tags'></span>
 						&nbsp;&nbsp;폐브리즈의 팀원들을 소개합니다!
 					</h3>
 				</div>
 				<table class="table">
-					<thead style='background-color: #F8C67F;' class='thead-inverse'>
+					<thead style='background-color: #F8C67F; width: 100%;' class='thead-inverse'>
 					</thead>
 					<tbody>
 						<tr>
@@ -116,8 +118,10 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<div class='table-responsive' style="width: 100%;">
 				<table class="table">
-					<thead style='background-color: #F8C67F;' class='thead-inverse'>
+					<thead style='background-color: #F8C67F; width: 100%;' class='thead-inverse'>
 						<tr>
 							<th>팀원명</th>
 							<th>position</th>
@@ -159,5 +163,6 @@
 		</div>
 	</div>
 </div>
+
 
 {% endblock %}
