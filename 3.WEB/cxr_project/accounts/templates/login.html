@@ -93,7 +93,7 @@ body {
 	<form action="{% url 'login' %}" method="post">
 		{% csrf_token %}
 		<div class="avatar">
-			<img src="{% static 'img/friends.png' %}" alt="약속">
+			<img src="{% static 'admin/img/friends.png' %}" alt="약속">
 		</div>           
 		<div class="form-group">
 			<input type="text" class="form-control input-lg" name="user_id" placeholder="Username"/>	
