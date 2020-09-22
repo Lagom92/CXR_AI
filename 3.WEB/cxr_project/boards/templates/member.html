@@ -8,6 +8,7 @@
 		background-size: cover;
 		text-shadow: black 0.2em 0.2em 0.2em;
 		color: white;
+		width: 100%;
 	} 
 </style>
 <style type="text/css">
@@ -34,81 +35,93 @@
 	}
 
 </style>
-
+<div class='col-xs-12'>
+<div class='row'>
+	<div style="text-align: center;"><h2>폐브리즈 family</h2></div>
+	<hr>
 <div class='container'>
 	<div class='row'>
-		<div class='col-xs-12'>
-			<div class='panel panel-primary'>
-				<div class='panel-heading'>
+		<br>
+		<div class='panel panel-default'>
+			<div class='table-responsive' style="width: 100%;">
+				<div style="background:#F8C67F; width: 100%;" class='panel-heading'>
 					<h3 class='panel-title'>
 						<span class='glyphicon glyphicon-tags'></span>
 						&nbsp;&nbsp;폐브리즈의 팀원들을 소개합니다!
 					</h3>
 				</div>
-				<div class='panel-body'>
-					<div class='media'>
-						<div class='media-left'>
-							<a href="#">
-								<img class="media-object" src="{% static 'img/시영.png' %}" alt='팀장 이미지'>
-							</a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>양시영</h4><br>
-								폐브리즈의 팀장 양시영입니다. 
-						</div>
-					</div>
-					<hr>
-					<div class='media'>
-						<div class='media-left'>
-							<a href="#">
-								<img class="media-object" src="{% static 'img/주연.png' %}" alt='팀원김주연 이미지'>
-							</a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>김주연</h4><br>
-								폐브리즈의 팀원 김주연입니다. 
-						</div>
-					</div>
-					<hr>
-					<div class='media'>
-						<div class='media-left'>
-							<a href="#">
-								<img class="media-object" src="{% static 'img/진혁.png' %}" alt='팀원김진혁 이미지'>
-							</a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>김진혁</h4><br>
-								폐브리즈의 팀원 김진혁입니다. 
-						</div>
-					</div>
-					<hr>
-					<div class='media'>
-						<div class='media-left'>
-							<a href="#">
-								<img class="media-object" src="{% static 'img/진균.png' %}" alt='팀원정진균 이미지'>
-							</a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>정진균</h4><br>
-								폐브리즈의 팀원 정진균입니다. 
-						</div>
-					</div>
-					<hr>
-					<div class='media'>
-						<div class='media-left'>
-							<a href="#">
-								<img class="media-object" src="{% static 'img/준범.png' %}" alt='팀원최준범 이미지'>
-							</a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>최준범</h4><br>
-								폐브리즈의 팀원 최준범입니다. 
-						</div>
-					</div>
-					<hr>
-				</div>
 				<table class="table">
-					<thead>
+					<thead style='background-color: #F8C67F; width: 100%;' class='thead-inverse'>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class='media'>
+									<div class='media-left'>
+										<img class="media-object" src="{% static 'img/시영.png' %}" alt='팀장 이미지'>
+									</div>
+									<div class='media-body'>
+										<h4 class='media-heading'>양시영</h4><br>
+											폐브리즈의 팀장 양시영입니다. 
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class='media'>
+									<div class='media-left'>
+										<img class="media-object" src="{% static 'img/주연.png' %}" alt='팀원김주연 이미지'>
+									</div>
+									<div class='media-body'>
+										<h4 class='media-heading'>김주연</h4><br>
+											폐브리즈의 팀원 김주연입니다. 
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class='media'>
+									<div class='media-left'>
+										<img class="media-object" src="{% static 'img/진혁.png' %}" alt='팀원김진혁 이미지'>
+									</div>
+									<div class='media-body'>
+										<h4 class='media-heading'>김진혁</h4><br>
+											폐브리즈의 팀원 김진혁입니다. 
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class='media'>
+									<div class='media-left'>
+										<img class="media-object" src="{% static 'img/진균.png' %}" alt='팀원정진균 이미지'>
+									</div>
+									<div class='media-body'>
+										<h4 class='media-heading'>정진균</h4><br>
+											폐브리즈의 팀원 정진균입니다. 
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class='media'>
+									<div class='media-left'>
+										<img class="media-object" src="{% static 'img/준범.png' %}" alt='팀원최준범 이미지'>
+									</div>
+									<div class='media-body'>
+										<h4 class='media-heading'>최준범</h4><br>
+											폐브리즈의 팀원 최준범입니다. 
+									</div>
+								</div>
+							</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class='table-responsive' style="width: 100%;">
+				<table class="table">
+					<thead style='background-color: #F8C67F; width: 100%;' class='thead-inverse'>
 						<tr>
 							<th>팀원명</th>
 							<th>position</th>
@@ -150,5 +163,6 @@
 		</div>
 	</div>
 </div>
+
 
 {% endblock %}
