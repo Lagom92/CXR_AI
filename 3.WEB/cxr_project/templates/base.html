@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -15,9 +15,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <script src="{% static 'js/loader.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/css/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/main.css' %}">
+    <script src="{% static 'admin/js/loader.js' %}"></script>
   </head>
 <body>
   <!-- 헤더 넣는 곳 -->
@@ -42,7 +42,7 @@
         </ul>
         <ul class='nav navbar-nav navbar-right'>
           {% if user.is_authenticated %}
-            <li><h3>{{user}}님 환영합니다.</h3></li>
+            <li style="color: white"><h3>{{user}}님 환영합니다.</h3></li>
             <li><a href="{% url 'logout' %}">log out</a></li>
             
           {% else %}
@@ -66,10 +66,12 @@
     <div class='container'>
       <br>
       <div style="text-align:center" class="row">
-        <div class='col-sm-3' style="'text-align: center;"><h5></h5></div>
-        <div class='col-sm-3' style="'text-align: center;"><h5>copyright &copy; 2020</h5><h5>폐브리즈(lung+breath)</h5><br><br><br></div>
+        <div class='col-sm-3' style="text-align: center;"><h5></h5></div>
+        <div class='col-sm-3' style="text-align: center;"><h5>copyright &copy; 2020</h5><h5>폐브리즈(lung+breath)</h5><br><br><br></div>
         <div class='col-sm-3'><h4 style="text-align: center;"><span class='glyphicon glyphicon-ok'></span>&nbspby 폐브리즈</h4></div>
-        <div class = 'col-sm-3'><h4 style='text-align:center;'></h4>
+        <div class = 'col-sm-3'>
+          <h4 style='text-align:center;'></h4>
+          <p><a style='color:white;' class='btn btn-light' data-target=#modal data-toggle='modal'>reference</a></p>
           </div>
         </div>	
       </div>
@@ -78,18 +80,35 @@
     <div class='modal' id='modal' tabindex="-1">
       <div class='modal-dialog'>
         <div class='modal-content'>
-          <div class='modal-header'>
-            COVID-19의 특징
-            <button class="close" data-dismiss='modal'>&times;</button>
+          <div class="modal-header">
+                reference
+                <a class='close' data-dismiss="modal">&times;</a>
           </div>
-          <div class='modal-body' style='text-align: center;'>
-            저희 서비스의 특징은 바로 빠른 코로나 양성여부 판단 입니다! <br>
-            특히 다양한 모델에 따른 결과가 연동되어 제공됩니다. <br><br>
-
-          </div>
+          <div class='modal-body' style='text-align: left;'>
+              covid-19 loader :<br>  
+              http://preloaders.animatepostcard.com/en/science
+              <br><br> 
+              animal icon: <br>  
+              Icons made by <a href="https://www.flaticon.com/authors/dighital" title="Dighital">Dighital</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com
+              <br><br>    
+              login icon:<br>  
+              Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+              <br><br>    
+              sign in icon:<br>  
+              Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+              <br><br>  
+              favicon:<br>  
+              Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+              <br><br> 
+              mainpage covid-19:<br>  
+              https://www.fcc.gov/koronabaireoseu-sagi-sobija-jeweon
+              <br><br>  
+              mainpage CXR:<br>  
+              kagle data set  https://www.kaggle.com/tawsifurrahman/covid19-radiography-database <br><br>
+            </div>
         </div>
       </div>
-    </div>
+    </div> 
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
