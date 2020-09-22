@@ -35,11 +35,7 @@
 
 
 
-<br/>
 
-### Github
-
-- [https://github.com/Lagom92/CXR_AI](https://github.com/Lagom92/CXR_AI)
 
 
 
@@ -47,7 +43,7 @@
 
 ### WEB 이미지
 
-
+-------------------
 
 <br/>
 
@@ -55,23 +51,23 @@
 
 
 
+--------------
 
-
-<br/>
+<br/><br/>
 
 ![test 페이지](./img/test.PNG)
 
 
 
+--------------
 
-
-<br/>
+<br/><br/>
 
 ![result 페이지](./img/result.PNG)
 
 
 
-
+--------------
 
 
 
