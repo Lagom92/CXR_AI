@@ -38,10 +38,14 @@
 	<div class='row text-center'>
 		<div><h2>Corona visualization project</h2></div>
 		<hr>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 			<div class='embed-responsive embed-responsive-16by9'>
 				<br>
 					<video width="800px" height="600px" src="{% static 'admin/img/corona.mp4' %}" controls muted loop preload></video>
 				<br>
+				<script>
+					var video = document.getElementById("myVideo");
+				</script>
 			</div>
 	</div>
 		<div>
