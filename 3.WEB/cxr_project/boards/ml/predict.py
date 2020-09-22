@@ -5,6 +5,8 @@ import tensorflow_hub as hub
 import cv2
 import numpy as np
 from .prediction_and_heatmap_function import get_img_array,make_gradcam_heatmap,gamma_correction,show_CAM,predict_CXR
+import os
+from django.conf import settings
 
 # 주연
 def prediction(image):
@@ -27,15 +29,15 @@ def prediction(image):
     return label
 #진균
 def inception_resnt_predict_CXR_and_heatmap(image_path):
-    model_path = r'boards\ml\inception_Resnet_model299_best.h5'
-    feature_model_path = r'boards\ml\Inception_Resnet_feature_model299.h5'
+    
+    model_name = 'inception_Resnet_model299_best.h5'
+    feature_model_name = 'inception_Resnet_feature_model299.h5'
 
-    model = load_model(model_path)
-    feature_model = load_model(feature_model_path)
+    loaded_model = tf.keras.models.load_model(os.path.join(settings.MODEL_ROOT, model_name))
+    loaded_feature_model = tf.keras.models.load_model(os.path.join(settings.MODEL_ROOT, feature_model_name))
 
-    prediction, plot = predict_CXR(image_path, model, feature_model)
-
-    heatmap = make_gradcam_heatmap(image_path, model, feature_model)
+    prediction, plot = predict_CXR(image_path, loaded_model, loaded_feature_model)
+    heatmap = make_gradcam_heatmap(image_path, loaded_model, loaded_feature_model)
 
     cam_image = show_CAM(image_path, heatmap, prediction)
 
