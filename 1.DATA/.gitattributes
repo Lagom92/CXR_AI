@@ -1,3 +1,0 @@
-COVID.zip filter=lfs diff=lfs merge=lfs -text
-NORMAL.zip filter=lfs diff=lfs merge=lfs -text
-PNEUMONIA.zip filter=lfs diff=lfs merge=lfs -text

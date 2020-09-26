@@ -1,2 +1,0 @@
-boards/ml/ filter=lfs diff=lfs merge=lfs -text
-boards/ml/Densenet.h5 filter=lfs diff=lfs merge=lfs -text
