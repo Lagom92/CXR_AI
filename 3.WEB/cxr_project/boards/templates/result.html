@@ -45,10 +45,16 @@
     <div class='row text-center'>
         <div> <h2>Result</h2></div>
         <hr>
-        <h3>예측 결과(Inception) : {{predict2}}</h3>
+        <h3>예측 결과(Inception) : </h3>
         <p>{{created_at}}</p>
-        
-        <div class='row'>
+        <h1>{{xray.photo}}</h1>
+        <div>
+            <p>CXR image</p>
+            <img src="{{xray.photo.url}}" alt="">
+        </div>
+        <h1>{{xray.prediction}}</h1>
+        <h1>{{xray.created_at}}</h1>
+        <!-- <div class='row'>
             <div class='col-md-4'>
                 <h2>원본 X-ray</h2> 
                 <img src="{{photo.url}}" width="300" height="300"> <br/><br/>
@@ -65,10 +71,17 @@
                     <img src="{{plot.url}}" width="400" height="300"> <br/><br/>
                 </div>    
             </div>
-        </div>
+        </div> -->
         <div style="text-align: center;"><h3>이 결과는 참고용일뿐, 자가진단용으로 사용이 부적합합니다. <br>몸에 이상이 있으실 경우 가까운 병원 또는 선별 진료소에 연락을 하여 진료를 받으시길 바랍니다.</h3></div>
     </div>    
     </div>
     <br><br>
+
+    <p>
+        <img src="{{xray.photo.url}}" alt="">
+        <p>
+            cxr image
+        </p> 
+    </p>
 </div>
 {% endblock %}

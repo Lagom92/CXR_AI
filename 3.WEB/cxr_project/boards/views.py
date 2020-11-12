@@ -1,12 +1,9 @@
 from django.http import request
 from django.shortcuts import render, redirect
-from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.contrib.auth.decorators import login_required
-from io import BytesIO
-
 from tensorflow.python.eager.context import context
-from .models import Xray
-from .ml.predict import inception_resnt_predict_CXR_and_heatmap , prediction, diseasePredict
+from .models import Xray, CoughAudio, MultiData
+from .apps import BoardsConfig
+from boards.myPredicts import make_wav2img, predict_multiInput
 
 def main(request):
 
@@ -33,38 +30,73 @@ def test(request):
 # 이미지 확인
 def result(request):
     xray = Xray.objects.last()
-
     if not xray.prediction:
-        predict, heatmap, plot = inception_resnt_predict_CXR_and_heatmap(xray.photo.path)
-        heatmap_io = BytesIO()
-        heatmap.save(heatmap_io, format='jpeg')
-        heat_file = InMemoryUploadedFile(heatmap_io, None, 'heat.jpg', 'image/jpeg', None, None)
-
-        plot_io = BytesIO()
-        plot.save(plot_io, format='jpeg')
-        plot_file = InMemoryUploadedFile(plot_io, None, 'plot.jpg', 'image/jpeg', None, None)
-
-        xray.prediction = predict
-        xray.heatmap = heat_file
-        xray.plot = plot_file
+        prediction = BoardsConfig.predict_CXR(xray.photo.path)
+        xray.prediction = prediction
         xray.save()
+    title = xray.photo.url.split('/')[-1]
+    return render(request, 'result.html', {'xray': xray, 'title': title})
 
-    context = {
-        'photo': xray.photo,
-        'predict2': xray.prediction,
-        'heatmap' : xray.heatmap,
-        'plot' : xray.plot,
-        'created_at': xray.created_at,
-    }
+# 오디오
+def audiotest(request):
+    if request.method == 'POST':
+        cough = CoughAudio.objects.create(
+            audio = request.FILES['audio'],
+            )
+        return redirect('audioresult')
 
-    return render(request, 'result.html', context)
+    else:
+        return render(request, 'audiotest.html')
 
+
+# 오디오 확인
+def audioresult(request):
+    cough = CoughAudio.objects.last()
+    if not cough.prediction:
+        audio_path = cough.audio.path
+        image_path = make_wav2img(audio_path)
+        prediction = BoardsConfig.predict_audio(image_path)
+        cough.mel = image_path[8:]
+        cough.prediction = prediction
+        cough.save()
+    return render(request, 'audioresult.html', {'cough': cough})
+
+
+# 멀티
+def multitest(request):
+    if request.method == 'POST':
+        multi = MultiData.objects.create(
+            photo = request.FILES['photo'],
+            audio = request.FILES['audio'],
+            )
+        return redirect('multiresult')
+
+    else:
+        return render(request, 'multitest.html')
+
+
+# 멀티 확인
+def multiresult(request):
+    multi = MultiData.objects.last()
+    if not multi.prediction:
+        audio_mel_path = make_wav2img(multi.audio.path)
+        prediction = predict_multiInput(multi.photo.path, audio_mel_path)
+        multi.mel = audio_mel_path[8:]
+        multi.prediction = prediction
+        multi.save()
+
+    return render(request, 'multiresult.html', {'multi': multi})
+
+
+
+
+# ------------------------------------------------------------------------------
 def model(request):
 
     return render(request, 'model.html')
 
 
-@login_required
+
 def history(request, user_id):
     if request.user.id != user_id:
         return redirect('main')
@@ -77,7 +109,8 @@ def history(request, user_id):
 
     return render(request, 'history.html', context)
 
-@login_required
+
+
 def detail(request, user_id, id):
     if request.user.id != user_id:
         return redirect('main')
@@ -90,11 +123,12 @@ def detail(request, user_id, id):
     return render(request, 'detail.html', context)
 
 
+
 def visualization(request):
 
     return render(request, 'visualization.html')
 
-@login_required
+
 def delete(request, user_id, id):
     if request.user.id != user_id:
         return redirect('main')
@@ -102,6 +136,7 @@ def delete(request, user_id, id):
         xray = Xray.objects.get(id=id)
         xray.delete()
         return redirect('main')
+
 
 def member(request):
 

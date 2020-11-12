@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<h1>audio result</h1>
+
+<h1>{{cough}}</h1>
+<h1>{{cough.audio}}</h1>
+<h1>{{cough.mel}}</h1>
+<h1>{{cough.mel.url}}</h1>
+<img src="{{cough.mel.url}}" alt="" >
+<h1>{{cough.created_at}}</h1>
+<h1>{{cough.prediction}}</h1>
+
+{% endblock %}

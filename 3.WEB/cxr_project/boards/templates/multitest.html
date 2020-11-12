@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<!-- loading image -->
+<div id="loading"><div id="loader_text">1분에서 2분정도의 시간이 걸립니다.</div></div>
+    
+<div class="container">
+    <div class='row text-center'>
+        <h1>multi</h1>
+        <div><h2>Test : AI 모델을 통해서 COVID-19 와 폐렴을 예측합니다!</h2></div>
+        <hr>
+    </div>
+    <div class='row text-center'style="margin-bottom: 15%; margin-top: 7%" >
+        <div class='input'>
+            <form action="" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                <h4>사진을 입력하세요! </h4>
+                audio: <input type="file" name="audio" style="margin-left:32%">  
+                <br>
+                cxr: <input type="file" name="photo" style="margin-left:32%">  
+                <br>
+                <input class="btn btn-dark" type="submit" value="Submit" onclick="loading();">
+            </form>
+        </div>
+    </div>
+    <br>    
+</div>
+
+{% endblock %}

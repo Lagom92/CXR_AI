@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<h1>multi result</h1>
+
+<h1>{{multi.photo}}</h1>
+<h1>{{multi.audio|slice:"3:"}}</h1>
+<h1>{{multi.created_at}}</h1>
+<h1>{{multi.prediction}}</h1>
+
+{% endblock %}

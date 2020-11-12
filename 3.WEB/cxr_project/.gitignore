@@ -1,3 +1,7 @@
 media/*
 
 models/*
+
+*/ml/*
+
+*.zip
