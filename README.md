@@ -31,7 +31,7 @@
 
 ### URL
 
-- [폐브리즈](https://jinhyuk.kim/)
+- [폐브리즈](http://codet.org/)
 
 
 
