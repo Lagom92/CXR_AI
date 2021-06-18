@@ -1,1 +1,23 @@
 mous
+ResNet의 핵심 부분인 Residual Block을 살펴보겠습니다. 위 그림의 왼쪽이 초기 형태의 Residual Block이고 오른쪽이 Residual Block + Bottleneck 형태입니다.
+Residual Block을 보면 Convolution 연산의 결과(A)와 연산을 거치지 않은 상태(B)를 합하게(A + B) 됩니다. 즉, 이 과정을 통해 Convolution 연산을 거친 것과 거치지 않은 것 모두를 이용하여 학습 시 gradient를 다양한 방식으로 반영할 수 있게됩니다.
+하지만 단순한 Residual Block에서는 계산량의 문제가 발생하게 됩니다. Residual Block을 계속 쌓게 되다 보니 파라미터가 계속 누적되어 계산량이 증폭되는 문제가 발생하게 됩니다.
+이 문제를 개선하기 위해 위 그림의 오른쪽 블록인 Residual Block + Bottleneck을 사용하게 됩니다. Bottleneck 구조는 앞에서 살펴 본 GoogLeNet에서 차용한 것입니다.
+Residual Block + Bottleneck에서는 1x1 convolution 연산을 통해 channel reduction을 한 뒤 3x3 convolution 연산을 하고 다시 1x1 convolution 연산을 통해 channel expansion을 하게 됩니다.
+여기까지가 DenseNet을 설명하기 위한 배경 설명입니다. 그러면 이 ResNet에서 어떻게 DenseNet이 확장되었는지 살펴보겠습니다.
+
+<ResNet>
+
+기존의 neural net의 학습 목적은 input(x)을 타겟값(y)으로 mapping하는 함수 H(x)를 찾는 것이였다.
+
+따라서 H(x)-y를 최소화하는 방향으로 학습을 진행한다.
+
+이때 이미지 classification과 같은 문제의 경우 x에 대한 타겟값 y는 사실 x를 대변하는 것으로 y와 x의 의미가 같게끔
+
+mapping해야한다. 즉, 강아지 사진의 pixel값이 input(x)로 주어질때 이를 2개의 label중 강아지가 1에 해당한다면
+ 
+타겟값(y)를 1로 정해서 학습하는 것이 아닌 강아지 사진의 pixel값 (x)로 y를 mapping해야한다.
+
+따라서 네트워크의 출력값이 x가 되도록 H(x)-x를 최소화하는 방향으로 학습을 진행한다.
+
+F(x) = H(x) - x를 잔차라고 하며 이 잔차를 학습하는 것은 Residual learning이라 한다.
