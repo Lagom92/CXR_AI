@@ -21,3 +21,50 @@ mapping해야한다. 즉, 강아지 사진의 pixel값이 input(x)로 주어질�
 따라서 네트워크의 출력값이 x가 되도록 H(x)-x를 최소화하는 방향으로 학습을 진행한다.
 
 F(x) = H(x) - x를 잔차라고 하며 이 잔차를 학습하는 것은 Residual learning이라 한다.
+
+DenseNet
+1. ResNet connectivity
+ DenseNet을 ResNet과 비교하여 설명합니다. ResNet의 l번째 레이어 출력값은 
+x
+l
+ = H(
+x
+l
+−
+1
+) + 
+x
+l
+−
+1
+이 됩니다. H()는 conv, bn, relu 함수의 연산을 의미합니다. 그리고 + xl-1은 skip connection에 의한 덧셈입니다. 이 경우에 레이어의 입력값이 출력값에 더해져 gradient flow가 직접적으로 전달됩니다. 하지만 덧셈으로 결합되기 때문에 신경망에서 정보 흐름(information flow)이 지연될 수 있다고 합니다.
+
+
+ 
+
+2. Dense connectivity
+ DenseNet은 이전 레이어를 모든 다음 레이어에 직접적으로 연결합니다. 따라서 정보 흐름(information flow)가 향상됩니다.
+
+
+ 위 수식 처럼 이전 레이어 
+x
+0
+,
+.
+.
+.
+,
+x
+l
+−
+1
+가 다 결합되어 H() 연산을 수행합니다. DensNet에서 H() 함수는 BN, ReLU, 3x3 conv입니다. pre-activation resnet의 순서를 따랐습니다.
+
+ 
+
+3. Dense Block
+ 연결(concatenation) 연산을 수행하기 위해서는 피쳐맵의 크기가 동일해야 합니다. 하지만 피쳐맵 크기를 감소시키는 pooling 연산은 conv net의 필수적인 요소입니다. pooling 연산을 위해 Dense Block 개념을 도입합니다. Dense Block은 여러 레이어로 구성되어 있습니다. Dense Block 사이에 pooling 연산을 수행합니다. pooling 연산은 BN, 1x1conv, 2x2 avg_pool로 수행합니다. 그리고 이를 transition layer이라고 부릅니다.
+
+ 
+
+ transition layer에는 theta 하이퍼 파라미터가 존재합니다. theta는 transition layer가 출력하는 채널 수를 조절합니다. transition layer의 입력값 채널 수가 m이면 theta * m 개의 채널수를 출력합니다. 1x1 conv에서 채널 수를 조절하는 것입니다. 논문에서는 theta=0.5를 사용하여 transition layer의 출력 채널 수를 0.5m으로 합니다. 즉, transition layer는 피쳐 맵의 크기와 채널 수를 감소시킵니다.
